@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .food-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .food-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .food-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .food-type {
+            color: #777;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .food-price {
+            font-size: 18px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Food Menu
+</header>
+
+<div class="menu-container">
+    {% for i in d %}
+        <div class="food-item">
+            <div class="food-name">{{ i.food_name }}</div>
+            <div class="food-type">{{ i.food_type }}</div>
+            <div class="food-price">{{ i.food_price }}</div>
+            <div class="description">{{ i.description }}</div>
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
