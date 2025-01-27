@@ -18,5 +18,6 @@ from django.urls import path
 from .import views
 
 urlpatterns = [
-   path("food/",views.foodMenu,name='foodMenu')
+   path("",views.foodMenu,name='foodMenu'),
+   path("food/",views.food_menu, name ='food')
 ]
