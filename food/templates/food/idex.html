@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Menu</title>
     <style>
+        /* General Body Styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            color: #333;
         }
-        
+
+        /* Header Styling */
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 15px 0;
             text-align: center;
+            padding: 15px 0;
             font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
+        /* Menu Container */
         .menu-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -27,6 +33,7 @@
             padding: 20px;
         }
 
+        /* Food Item Card */
         .food-item {
             background-color: white;
             border-radius: 8px;
@@ -40,28 +47,64 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
+        /* Food Name */
         .food-name {
             font-size: 22px;
             font-weight: bold;
-            color: #333;
+            margin-bottom: 10px;
         }
 
+        /* Food Type */
         .food-type {
-            color: #777;
             font-size: 16px;
-            margin: 10px 0;
+            color: #777;
+            margin: 5px 0;
         }
 
+        /* Food Price */
         .food-price {
             font-size: 18px;
             color: #4CAF50;
             font-weight: bold;
+            margin: 10px 0;
         }
 
+        /* Food Description */
         .description {
             font-size: 14px;
             color: #555;
             margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-buttons a:hover {
+            background-color: #45a049;
+        }
+
+        .action-buttons a.delete {
+            background-color: #f44336;
+        }
+
+        .action-buttons a.delete:hover {
+            background-color: #d32f2f;
         }
     </style>
 </head>
@@ -74,10 +117,17 @@
 <div class="menu-container">
     {% for i in food %}
         <div class="food-item">
+            <!-- Food Details -->
             <div class="food-name">{{ i.food_name }}</div>
-            <div class="food-type">{{ i.food_type }}</div>
-            <div class="food-price">{{ i.food_price }}</div>
-            <div class="description">{{ i.description }}</div>
+            <div class="food-type">Type: {{ i.food_type }}</div>
+            <div class="food-price">Price: ₹{{ i.food_price }}</div>
+            <div class="description">Description: {{ i.description }}</div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="{% url 'update_food' i.id %}">Update</a>
+                <a href="{% url 'delete_food' i.id %}" class="delete">Delete</a>
+            </div>
         </div>
     {% endfor %}
 </div>

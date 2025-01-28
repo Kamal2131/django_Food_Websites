@@ -19,5 +19,7 @@ from .import views
 
 urlpatterns = [
    path("",views.foodMenu,name='foodMenu'),
-   path("food/",views.food_menu, name ='food')
+   path("food/",views.food_menu, name ='food'),
+   path('update/<int:id>/', views.update_food, name='update_food'),  # Update view
+   path('delete/<int:id>/', views.delete_food, name='delete_food'),
 ]
